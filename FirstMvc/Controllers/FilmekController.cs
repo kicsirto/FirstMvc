@@ -30,9 +30,18 @@ namespace FirstMvc.Controllers
 
         }
 
-        public ActionResult Index(int oldal, string rendezes)
+        public ActionResult Index(int oldal= 1 , string rendezes = "cim")
         {
+            //if (!oldal.HasValue) oldal = 1;
+            //if (string.IsNullOrWhiteSpace(rendezes)) rendezes = "cim";
+
             return Content($"oldalszám: {oldal} | rendezés: {rendezes}");
+
+
+        }
+
+        public ActionResult MegjenesSzerint(int ev, int honap) {
+            return Content($"év: {ev} | honap: {honap}");
 
 
         }
