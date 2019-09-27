@@ -12,16 +12,17 @@ namespace FirstMvc
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapMvcAttributeRoutes();
 
-            routes.MapRoute(
-                "FilmekMegjelenesSzerint",
-                "Filmek/MegjenesSzerint/{ev}/{honap}",
-                new { controller = "Filmek", action = "MegjenesSzerint" },
-                new { ev = @"\d{4}", honap = @"\d{2}"}
+            //routes.MapRoute(
+            //    "FilmekMegjelenesSzerint",
+            //    "Filmek/MegjenesSzerint/{ev}/{honap}",
+            //    new { controller = "Filmek", action = "MegjenesSzerint" },
+            //    new { ev = @"\d{4}", honap = @"\d{2}"}
                 
 
 
-                );
+            //    );
 
 
 

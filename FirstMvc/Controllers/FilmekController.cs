@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FirstMvc.Models;
+using FirstMvc.ViewModels;
 
 namespace FirstMvc.Controllers
 {
@@ -15,7 +16,23 @@ namespace FirstMvc.Controllers
 
 
             var film = new Film() { Cim = "Nincs ilyen" };
-            return View(film);
+            var kolcsonzok = new List<Kolcsonzo>() {
+                new Kolcsonzo() { Nev = "Ricsi" },
+                new Kolcsonzo() { Nev = "Lacika" },
+                new Kolcsonzo() { Nev = "Sajt" },
+                new Kolcsonzo() { Nev = "Sajt" },
+                new Kolcsonzo() { Nev = "Sajt" }
+
+            };
+            var rfvm = new RandomFilmViewModel()
+            {
+                Film = film,
+                Kolcsonzok = kolcsonzok
+
+            };
+            //ViewData["Film"] = film;
+            //ViewBag.Film = film;
+            return View(rfvm);
             //return Content("szeretem a tejet");
             //return HttpNotFound();
             //return RedirectToAction("About","Home", new { oldal=1, rendezes= "cim"});
@@ -39,8 +56,8 @@ namespace FirstMvc.Controllers
 
 
         }
-
-        public ActionResult MegjenesSzerint(int ev, int honap) {
+        [Route("Filmek/Megjelenes/{ev:regex(\\d{4})}/{honap:regex(\\d{2}):range(1, 12)}")]
+        public ActionResult MegjenesSzerint(int ev=2000, int honap=01) {
             return Content($"év: {ev} | honap: {honap}");
 
 
